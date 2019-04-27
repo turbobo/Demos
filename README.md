@@ -1,4 +1,5 @@
 # Employee
 Employee
 
-员工管理系统1.0和3.0版本
+yuangongguanli.java：员工管理系统v1.0
+cn.hd.employee：员工管理系统v3.0
