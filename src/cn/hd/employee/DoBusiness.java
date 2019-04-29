@@ -2,59 +2,71 @@ package cn.hd.employee;
 
 import java.util.Scanner;
 
-/*ÒµÎñÀà:¶ÔÔ±¹¤½øĞĞ²Ù×÷  ÔöÉ¾¸Ä²é
+/*ä¸šåŠ¡ç±»:å¯¹å‘˜å·¥è¿›è¡Œæ“ä½œ  å¢åˆ æ”¹æŸ¥
  * 
  */
 
 public class DoBusiness {
-	Employee[] emps=new Employee[100];		//Ô±¹¤Êı×é!!!!!!!!!!!!!!!!!
-	int count=0;		//¼ÆÊıÆ÷
+	Employee[] emps=new Employee[100];		//å‘˜å·¥æ•°ç»„!!!!!!!!!!!!!!!!!
+	int count=0;		//è®¡æ•°å™¨
+	//ArrayList al=new ArrayList();			//åˆ›å»ºArrayList
+
 	/*
-	 * Ìí¼ÓÔ±¹¤
-	 * ³É¹¦  ·µ»Øtrue
+	 * æ·»åŠ å‘˜å·¥
+	 * æˆåŠŸ  è¿”å›true
 	 */
 	public boolean add(Employee emp) {
-		emps[count++]=emp;
+		emps[count]=emp;
+		//al.add(emps[count]);			//å‘ArrayListè¡¨ä¸­æ·»åŠ å¯¹è±¡
+		count++;
 		return true;
 		
 	}
 	
-	//²éÑ¯µ¥¸öÔ±¹¤
+	//æŸ¥è¯¢å•ä¸ªå‘˜å·¥
 	public Employee selectById(String id) {
 		int i;
-		for(i=0;i<emps.length;i++)			//Ã¿´ÎÊäÈëÒ»¸öÔ±¹¤µÄĞÅÏ¢
+		for(i=0;i<emps.length;i++)			//æ¯æ¬¡è¾“å…¥ä¸€ä¸ªå‘˜å·¥çš„ä¿¡æ¯
 			if(emps[i]!=null)
 				if(emps[i].getSid().equals(id)) {
 					System.out.println(emps[i].getSid()+"       "+emps[i].getSname()+"    "+emps[i].getBirthday()+"     "+emps[i].getSalary());		
 					break;
 				}
-		if(i==emps.length)	  System.out.println("**********¸ÃÔ±¹¤²»´æÔÚ!**********");	
-		return null;
+		if(i==emps.length)	  System.out.println("**********è¯¥å‘˜å·¥ä¸å­˜åœ¨!**********");	
+		return null;					//å¿…é¡»è¦æœ‰è¿”å›å€¼ï¼Œä¸ºç©ºå³å¯
 	}
 	
-	//²éÑ¯ËùÓĞÔ±¹¤
+	//æŸ¥è¯¢æ‰€æœ‰å‘˜å·¥
 	public Employee selectAll() {
-		System.out.println("Ô±¹¤±àºÅ        Ô±¹¤Ãû³Æ       Ô±¹¤ÉúÈÕ                Ô±¹¤Ğ½×Ê");
-		for(int i=0;i<emps.length;i++) 			//Ã¿´ÎÊäÈëÒ»¸öÔ±¹¤µÄĞÅÏ¢
+		System.out.println("å‘˜å·¥ç¼–å·        å‘˜å·¥åç§°       å‘˜å·¥ç”Ÿæ—¥                å‘˜å·¥è–ªèµ„");
+		for(int i=0;i<emps.length;i++) 			//æ¯æ¬¡è¾“å…¥ä¸€ä¸ªå‘˜å·¥çš„ä¿¡æ¯
 			if(emps[i]!=null)
 				System.out.println(emps[i].getSid()+"       "+emps[i].getSname()+"    "+emps[i].getBirthday()+"     "+emps[i].getSalary());
 		
-		return null;
+		
+// 		Iterator it=al.iterator();				//åˆ©ç”¨é›†åˆçš„è¿­ä»£å™¨è®¿é—®å±æ€§
+// 		while(it.hasNext()) {
+// 			Employee a=(Employee)it.next(); 		//å…ˆæŠŠè·å¾—çš„å¯¹è±¡ç”±Objectç±»å¼ºåˆ¶è½¬æ¢ä¸ºEmployeeç±»
+// 			System.out.println(a.getSid()+"------"+a.getSname()+"------"+a.getBirthday()+"------"+a.getSalary());
+// 		}
+		
+		
+		return null;						//å¿…é¡»è¦æœ‰è¿”å›å€¼ï¼Œä¸ºç©ºå³å¯
 		
 	}
 	
-	//ĞŞ¸ÄÔ±¹¤
-	public boolean update(String id) {		//¸ù¾İid²éÑ¯
+	//ä¿®æ”¹å‘˜å·¥
+	public boolean update(String id) {		//æ ¹æ®idæŸ¥è¯¢
 		Scanner sc=new Scanner(System.in);
 		int i;
-		for(i=0;i<emps.length;i++)			//Ã¿´ÎÊäÈëÒ»¸öÔ±¹¤µÄĞÅÏ¢	//Ö±½Ó°Ñ´«¹ıÀ´µÄÔ±¹¤¸³¸øµ±Ç°Êı×éÖĞ
+		for(i=0;i<emps.length;i++)			//æ¯æ¬¡è¾“å…¥ä¸€ä¸ªå‘˜å·¥çš„ä¿¡æ¯	//ç›´æ¥æŠŠä¼ è¿‡æ¥çš„å‘˜å·¥èµ‹ç»™å½“å‰æ•°ç»„ä¸­
 			if(emps[i]!=null)
 				if(emps[i].getSid().equals(id)) {
-					System.out.println("**********ÇëÊäÈëĞŞ¸ÄÔ±¹¤µÄĞÕÃû**********");
+					System.out.println("**********è¯·è¾“å…¥ä¿®æ”¹å‘˜å·¥çš„å§“å**********");
 					String name=sc.next();
-					System.out.println("**********ÇëÊäÈëĞŞ¸ÄÔ±¹¤µÄÉúÈÕ**********");
+					System.out.println("**********è¯·è¾“å…¥ä¿®æ”¹å‘˜å·¥çš„ç”Ÿæ—¥**********");
 					String birthday=sc.next();
-					System.out.println("**********ÇëÊäÈëÌí¼ÓÔ±¹¤µÄĞ½×Ê**********");
+					System.out.println("**********è¯·è¾“å…¥æ·»åŠ å‘˜å·¥çš„è–ªèµ„**********");
 					String salary=sc.next();
 					emps[i].setSid(id);
 					emps[i].setSname(name);
@@ -62,20 +74,20 @@ public class DoBusiness {
 					emps[i].setSalary(salary);
 					return true;
 				}
-		if(i==emps.length)	  System.out.println("**********¸ÃÔ±¹¤²»´æÔÚ!**********");	
+		if(i==emps.length)	  System.out.println("**********è¯¥å‘˜å·¥ä¸å­˜åœ¨!**********");	
 		return false;
 	}
 	
-	//É¾³ıÔ±¹¤
+	//åˆ é™¤å‘˜å·¥
 	public boolean delete(String id) {
 		int i;
-		for(i=0;i<emps.length;i++)			//Ã¿´ÎÊäÈëÒ»¸öÔ±¹¤µÄĞÅÏ¢
-			if(emps[i]!=null)				//ÅĞ¶ÏÊÇ·ñÎª¿Õ,±ÜÃâ¿ÕÖ¸Õë!!!!!!!!!!!!!!!
+		for(i=0;i<emps.length;i++)			//æ¯æ¬¡è¾“å…¥ä¸€ä¸ªå‘˜å·¥çš„ä¿¡æ¯
+			if(emps[i]!=null)				//åˆ¤æ–­æ˜¯å¦ä¸ºç©º,é¿å…ç©ºæŒ‡é’ˆ!!!!!!!!!!!!!!!
 				if(emps[i].getSid().equals(id)) {
 					emps[i]=null;
 					return true;
 			}
-		if(i==emps.length)	   System.out.println("**********¸ÃÔ±¹¤²»´æÔÚ!**********");	   
+		if(i==emps.length)	   System.out.println("**********è¯¥å‘˜å·¥ä¸å­˜åœ¨!**********");	   
 		return false;
 	}
 	
